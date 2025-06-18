@@ -1,0 +1,8 @@
+using System.ComponentModel.DataAnnotations;
+
+public class Event
+{
+    [Required(ErrorMessage = "Title is required")]
+    [StringLength(100, ErrorMessage = "Title too long")]
+    public string Title { get; set; } = string.Empty;
+}

@@ -1,0 +1,26 @@
+@page "/register"
+@inject EventService EventService
+@inject NavigationManager NavManager
+
+<EditForm Model="@newEvent" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label>Event Title</label>
+        <InputText @bind-Value="newEvent.Title" class="form-control" />
+        <ValidationMessage For="@(() => newEvent.Title)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</EditForm>
+
+@code {
+    private Event newEvent = new();
+
+    private async Task HandleSubmit()
+    {
+        await EventService.AddEventAsync(newEvent);
+        NavManager.NavigateTo("/events");
+    }
+}

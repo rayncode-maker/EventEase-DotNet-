@@ -1,0 +1,13 @@
+<div class="card mb-4 shadow-sm">
+    <img src="@EventItem.ImageUrl" class="card-img-top" alt="Event Image">
+    <div class="card-body">
+        <h5 class="card-title">@EventItem.Title</h5>
+        <p class="card-text">@EventItem.Description</p>
+        <small class="text-muted">@EventItem.Date.ToShortDateString()</small>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Event EventItem { get; set; } = new();
+}
